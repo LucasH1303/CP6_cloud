@@ -1,0 +1,80 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos :: cabecalho(#{texto.lista.discentes})}" />
+
+  <body>
+
+	<form th:replace="~{fragmentos :: form-logout}" />
+	
+	<div th:replace="~{fragmentos :: idioma('index')}" />
+	
+	
+
+	<div class="container">
+		
+		<br>
+		
+		<div style="text-align: left;">
+		
+			<img th:src="@{/img/logo-fiap.jpg}" alt="Logo da FIAP" style="width: 150px; height: auto;">
+		
+		</div>
+		
+		<br>
+		
+		<div th:replace="~{fragmentos :: saudacoes(${usuario})}" />
+		
+        <div class="row">
+            <h1 th:text="#{texto.lista.discentes}">Lista de Discentes</h1>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+							<th scope="col">ID</th>
+                            <th scope="col" th:text="#{texto.nome.pessoa}">Nome</th>
+                            <th scope="col">RM</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" th:text="#{texto.nivel.discente}">Nível</th>
+                            <th scope="col" th:text="#{texto.data_nascimento.pessoa}">Data de Nasc.</th>
+                            <th scope="col">#</th>
+                            <th scope="col">#</th>
+                            <th scope="col">#</th>
+                        </tr>
+                      </thead>
+                    <tbody>
+                        <tr th:each="discente : ${discentes}">
+                            <th class="col-2" scope="row" th:text="${discente.id}">A</th>
+                            <td class="col-2" th:text="${discente.pessoa.nome}">B</td>
+                            <td class="col-2" th:text="${discente.rm}">C</td>
+                            <td class="col-2"
+                            th:with="aux = 'status.' + ${discente.status.name().toLowerCase()}" 
+                            th:text="#{${aux}}"D</td>
+                            <td class="col-2" 
+                            th:with="aux = 'nivel.' + ${discente.nivel.name().toLowerCase()}" 
+                            th:text="#{${aux}}">E</td>
+                            <td class="col-2" th:text="${#temporals.format(discente.pessoa.dataNascimento,'dd/MM/yyyy')}">F</td>
+                            <td class="col-2"><a th:href="@{/discente/detalhes/{idDiscente}(idDiscente = ${discente.id})}"><span th:text="#{link.detalhes}"></span></a></td>
+                            <td class="col-2"><a th:href="@{/discente/editar/{idDiscente}(idDiscente = ${discente.id})}"><span th:text="#{link.editar}"></span></a></td>
+                            <td class="col-2"><a th:href="@{/discente/remover/{idDiscente}(idDiscente = ${discente.id})}"><span th:text="#{link.remover}"></span></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <a href="/pessoa/nova"><span th:text="#{texto.botao.cad.pessoa}"></span></a><br>
+            <a href="/usuario/novo"><span th:text="#{texto.botao.cad.usuario}"></span></a><br>
+            <a href="/kafka"><span th:text="#{texto.botao.mensagem.kafka}"></span></a><br>
+            <a href="/rabbit"><span th:text="#{texto.botao.mensagem.rabbit}"></span></a><br>
+            <a href="/controle/telemetria"><span th:text="#{texto.botao.acesso.actuator}"></span></a><br>
+             <a href="/controle/telemetria2"><span th:text="#{texto.botao.acesso.actuator2}"></span></a>
+        </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+</html>
