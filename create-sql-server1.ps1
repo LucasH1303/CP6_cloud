@@ -1,9 +1,9 @@
-$RG = "rg-testesprint4"
+$RG = "rg-decepticons_cp6"
 $LOCATION = "brazilsouth"
-$SERVER_NAME = "sqlserver-testesprint4"
+$SERVER_NAME = "sqlserver-decepticons_cp6"
 $USERNAME = "admsql"
 $PASSWORD = "Fiap@2tdsvms"
-$DBNAME = "testedb"
+$DBNAME = "Decepticonsdb"
 
 az group create --name $RG --location $LOCATION
 az sql server create -l $LOCATION -g $RG -n $SERVER_NAME -u $USERNAME -p $PASSWORD --enable-public-network true
