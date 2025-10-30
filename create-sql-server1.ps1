@@ -1,6 +1,6 @@
-$RG = "rg-decepticons_cp6"
+$RG = "rg-decepticons-cp6"
 $LOCATION = "brazilsouth"
-$SERVER_NAME = "sqlserver-decepticons_cp6"
+$SERVER_NAME = "sqlserver-decepticons-cp6"
 $USERNAME = "admsql"
 $PASSWORD = "Fiap@2tdsvms"
 $DBNAME = "decepticonsdb"
