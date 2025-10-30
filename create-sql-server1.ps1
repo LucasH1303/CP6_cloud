@@ -3,7 +3,7 @@ $LOCATION = "brazilsouth"
 $SERVER_NAME = "sqlserver-decepticons_cp6"
 $USERNAME = "admsql"
 $PASSWORD = "Fiap@2tdsvms"
-$DBNAME = "Decepticonsdb"
+$DBNAME = "decepticonsdb"
 
 az group create --name $RG --location $LOCATION
 az sql server create -l $LOCATION -g $RG -n $SERVER_NAME -u $USERNAME -p $PASSWORD --enable-public-network true
